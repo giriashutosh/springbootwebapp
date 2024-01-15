@@ -1,0 +1,4 @@
+whenever we have to pass the query parameter to JSP then we have to use the model.
+In production, we should set the logging to info
+Req accept -> Dispatcher servlet -> identifies the correct controller method ->
+-> execute the controller method -> viewResolver find the correct view -> return HTTP response

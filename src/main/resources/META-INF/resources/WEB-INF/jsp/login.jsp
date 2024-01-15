@@ -3,6 +3,7 @@
         <title>Login Page</title>
     </head>
         <body>
+        <h1>welcome to login page Mr. ${name} </h1>
            <label>Username:</label>
            <input type="text" />
            <label>Password:</label>
