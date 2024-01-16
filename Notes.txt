@@ -2,3 +2,16 @@ whenever we have to pass the query parameter to JSP then we have to use the mode
 In production, we should set the logging to info
 Req accept -> Dispatcher servlet -> identifies the correct controller method ->
 -> execute the controller method -> viewResolver find the correct view -> return HTTP response
+
+Request vs session vs model
+model - whenever we put anything in the model be default it will only be available for particular scope of request.
+session - @SessionAttributes need to put this in every controller. it takes additional memory bcz it stored on server.
+
+/META-INF/resources/webjars/bootstrap/5.3.1/css/bootstrap.min.css
+
+
+/META-INF/resources/webjars/bootstrap/5.3.1/js/bootstrap.min.js
+
+
+/META-INF/resources/webjars/jquery/3.7.1/jquery.min.js
+

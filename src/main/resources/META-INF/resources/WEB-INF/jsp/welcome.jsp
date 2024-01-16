@@ -3,8 +3,8 @@
         <title>Welcome Page</title>
     </head>
         <body>
-            <div>Welcome to Developer World!</div>
-            <div>Your Name: ${name}</div>
-            
+            <h1>Welcome ${name}</h1>
+            <hr>
+            <div><a href = "list-todos">Manage</a> Your Todos</div>
         </body>
 </html>
