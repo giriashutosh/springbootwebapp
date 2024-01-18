@@ -14,25 +14,25 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import java.time.LocalDate;
 import java.util.List;
 
-//@Controller
+@Controller
 @SessionAttributes("name")
-public class TodoController {
+public class TodoControllerJpa {
 
     private TodoService todoService;
+    private TodoRepository todoRepository;
 
-    public TodoController(TodoService todoService) {
+    public TodoControllerJpa(TodoService todoService, TodoRepository todoRepository) {
+        this.todoRepository = todoRepository;
         this.todoService = todoService;
     }
 
     @RequestMapping("list-todos")
     public String listAllTodos(ModelMap model){
         String username = getLoggedInUsername(model);
-        List<Todo> todos = todoService.findByUsername(username);
+        List<Todo> todos = todoRepository.findByUsername(username);
         model.addAttribute("todos", todos);
         return "listTodos";
     }
-
-
 
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
     public String showNewTodoPage(ModelMap model){
@@ -48,14 +48,17 @@ public class TodoController {
             return "todo";
         }
         String username = getLoggedInUsername(model);
-        todoService.addTodo(username, todo.getDescription(), todo.getTargetDate(), false);
+        todo.setUsername(username);
+        todoRepository.save(todo);
+        //todoService.addTodo(todo.getUsername(), todo.getDescription(), todo.getTargetDate(), todo.isDone());
         return "redirect:list-todos";
     }
 
     @RequestMapping("delete-todo")
     public String deleteTodo(@RequestParam int id){
        //Delete todo
-        todoService.deleteById(id);
+         todoRepository.deleteById(id);
+        //todoService.deleteById(id);
         return "redirect:list-todos";
     }
 
@@ -74,6 +77,7 @@ public class TodoController {
         }
         String username = getLoggedInUsername(model);
         todo.setUsername(username);
+
         todoService.updateTodo(todo);
         return "redirect:list-todos";
     }

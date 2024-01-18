@@ -15,3 +15,13 @@ session - @SessionAttributes need to put this in every controller. it takes addi
 
 /META-INF/resources/webjars/jquery/3.7.1/jquery.min.js
 
+when we use spring security
+By Default
+1. All urls are protected
+2. A login form is shown for unauthorized requests
+Need to do
+CSRF disable
+Frames
+
+data.sql file get executed before entity class processed to resolve this we need to configure
+something in the application.properties file
